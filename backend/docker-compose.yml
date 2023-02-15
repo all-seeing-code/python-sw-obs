@@ -1,0 +1,36 @@
+
+version: '3'
+
+services:
+  server:
+    build: .
+    ports:
+      - 5000:5000
+    networks:
+      - grafana-prometheus
+    environment:
+    - WORKERS=10 #Change this to configure number of process threads in the backend server
+    - DEBUG_METRICS=false
+  prometheus:
+    image: prom/prometheus
+    volumes:
+    - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+    - prometheus_data:/prometheus
+    ports:
+      - 9090:9090
+    networks:
+      - grafana-prometheus
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - 3000:3000
+    networks:
+      - grafana-prometheus
+volumes:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  grafana-prometheus:
