@@ -51,6 +51,8 @@ You can also import a dashboard with relevant metrics by importing [`grafana.jso
 
 When successfully import the final dashboard should look like:
 
+![dashboard](backend/grafana/Dashboard-Example.png)
+
 
 
 
