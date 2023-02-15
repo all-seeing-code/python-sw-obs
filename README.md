@@ -21,12 +21,6 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=15) as executor:
             print("Total time: ", time.time() - start_time)
         time.sleep(15)
 ```
-Since each thread waits for its job to be returned, this is required to concurrently send requests to the server.
-
-Update number of worker processes using:
-```bash
-curl -H "Content-Type: application/json" -d '{"count":15}' -X POST localhost:5000/update_worker
-```
 
 
 ## Server
@@ -41,6 +35,12 @@ docker-compose up
 This should build server's docker image and pull prometheus & grafanas image from docker-hub. It will also ensure that all ports are correctly configured.
 
 Server works on a worker queue principle. Each client thread's job gets added to a work queue and the server's processors pick jobs from work queue and add results back on the result queue.
+
+
+Update number of worker processes using:
+```bash
+curl -H "Content-Type: application/json" -d '{"count":15}' -X POST localhost:5000/update_worker
+```
 
 ### Grafana
 Once the grafana is running, you can login to `localhost:3000` using default username and password `(admin,admin)`. 
