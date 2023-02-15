@@ -55,5 +55,9 @@ When successfully import the final dashboard should look like:
 
 
 
+### Footnote:
+<img src="https://user-images.githubusercontent.com/4118783/219196307-46f5f310-9c9d-4fb0-a119-eb09aa863a2c.png" width="450px">
+
+
 
 
